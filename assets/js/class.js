@@ -3,8 +3,6 @@
 let choice;
 let nums = [];
 let operaion = " ";
-let result='';
-let finalRe='';
 
 
 choice=prompt("how many numbers do you want to enter?");
@@ -12,62 +10,79 @@ for (let index = 0; index < choice; index++) {
     num1 = prompt("enter num");
     nums.push(num1);
     }
-operation = prompt("enter operation");
+operaion = prompt("enter operation");
 
 
 
 
     
     function sum(nums) {
+        var result=0;
         for (let index = 0; index < nums.length; index++) {
-            Number(result)+=nums[index];
+            if(isNaN(nums[index])){
+                continue;
+                 }
+            result += Number(nums[index]);
             }
         return result;
     }
     function sub(nums) {
-    
+        var result=0;
         for (let index = 0; index < nums.length; index++) {
-           Number(result)-=nums[index];
+            if(isNaN(nums[index])){
+                continue;
+                 }
+           result=result-Number(nums[index]);
             }
         return result;
     }
     function mult(nums) {
+        var result=1;
         for (let index = 0; index < nums.length; index++) {
-           Number(result)*=nums[index];
+            
+           result*=Number(nums[index]);
             }
         return result;
         
         
     }
     function div(nums) {
-            for (let index = 0; index < nums.length; index++) {
-           Number(result)/=nums[index];
+        var result;
+        for (let index = 0; index < nums.length; index++) {
+            if (Number(nums[index]=!0)) {
+           result=result/Number(nums[index]);}
+
                 }
             return result;
         
         
     }
+    switch(operaion) {
+    case "add": 
+        console.log(sum(nums));
+        break;
+        
     
-    if (operation = "add"){
+    case "sub" : 
+        console.log(sub(nums));
+        break;
         
-        Number(finalRe)=sum(nums);
+    
+    case "mult" : 
+        console.log(mult(nums));
+        break;
         
+    
+    case "div" : 
+        console.log(div(nums));
+        break;
         
-    }
-    if (operation = "sub"){
-        Number(finalRe)=sub(nums);
-        
-    }
-    if (operation = "mult"){
-        Number(finalRe)=mult(nums);
-        
-    }
-    if (operation = "div"){
-        Number(finalRe)=div(nums);
-        
-    }
-    console.log(finalRe);
-
+    default:
+        console.log('Invalid operator');
+        break;
+}
+    
+    
 
 
 

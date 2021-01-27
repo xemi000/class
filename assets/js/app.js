@@ -1,38 +1,88 @@
-var firstName;
-var lastName;
-var birthYear;
-var job;
-
-let tempAge;
-let eligableToVote;
-let familyMemeber = new Array();
-
-let noOfFamily;
 
 
-firstName=prompt("Your First Nmae");
-lastName=prompt("Your Last Nmae");
-birthYear=prompt("DOB");
-jpob=prompt("Your JOB");
-noOfFamily=prompt("how may fam do you have?")
+let choice;
+let nums = [];
+let operaion = " ";
+
+
+choice=prompt("how many numbers do you want to enter?");
+for (let index = 0; index < choice; index++) {
+    num1 = prompt("enter num");
+    nums.push(num1);
+    }
+operation = prompt("enter operation");
 
 
 
 
-for (let index = 0; index < parseInt(noOfFamily); index++){
-             
-    familyMemeber[index]= prompt("family memeber" + (index + 1));
+    
+    function sum(nums) {
+        var result=0;
+        for (let index = 0; index < nums.length; index++) {
+            if(isNaN(nums[index])){
+                continue;
+                 }
+            result += Number(nums[index]);
+            }
+        return result;
+    }
+    function sub(nums) {
+        var result=0;
+        for (let index = 0; index < nums.length; index++) {
+            if(isNaN(nums[index])){
+                continue;
+                 }
+           result=result-Number(nums[index]);
+            }
+        return result;
+    }
+    function mult(nums) {
+        var result=1;
+        for (let index = 0; index < nums.length; index++) {
+            
+           result*=Number(nums[index]);
+            }
+        return result;
+        
+        
+    }
+    function div(nums) {
+        var result;
+        for (let index = 0; index < nums.length; index++) {
+            if (Number(nums[index]=!0)) {
+           result=result/Number(nums[index]);}
+
+                }
+            return result;
+        
+        
+    }
+    switch(operaion) {
+    case  "add": 
+        console.log(sum(nums));
+        break;
+        
+    
+    case "sub" : 
+        console.log(sub(nums));
+        break;
+        
+    
+    case "mult" : 
+        console.log(mult(nums));
+        break;
+        
+    
+    case "div" : 
+        console.log(div(nums));
+        break;
+        
+    default:
+        console.log('Invalid operator');
+        break;
 }
-
-
-tempAge=calcAge(birthYear);
-
-if(tempAge>=18){
-    eligableToVote=true;
-}
-else{
-    eligableToVote=false;
-}
+    
+    
 
 
 
@@ -41,19 +91,5 @@ else{
 
 
 
-console.log("here ia your info");
-console.log("Full name" + firstName + " " + lastName);
-console.log("proffesion" + job);
-console.log("age" + age);
-console.log("eligable to vote" + eligableToVote);
 
 
-familyMemeber.forEach(function(familyMemeber, index) {
-    console.log("family member " + (index + 1) + " " + familyMemeber);
-});
-
-
-function calcAge (br) {
-
-    return new Date().getFullYear() - br;
-}
