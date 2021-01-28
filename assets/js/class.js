@@ -32,7 +32,7 @@ operaion = prompt("enter operation");
             if(isNaN(nums[index])){
                 continue;
                  }
-           result=result-Number(nums[index]);
+           result=(Number(nums[index])-result);
             }
         return result;
     }
@@ -47,10 +47,10 @@ operaion = prompt("enter operation");
         
     }
     function div(nums) {
-        var result;
+        var result=1;
         for (let index = 0; index < nums.length; index++) {
             if (Number(nums[index]=!0)) {
-           result=result/Number(nums[index]);}
+           result=1/(result/Number(nums[index]));}
 
                 }
             return result;
