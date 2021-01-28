@@ -49,10 +49,18 @@ operaion = prompt("enter operation");
     function div(nums) {
         var result=1;
         for (let index = 0; index < nums.length; index++) {
-            if (Number(nums[index]=!0)) {
-           result=1/(result/Number(nums[index]));}
+            if (Number(nums[index]!==0)) {
+           result=Number(nums[index])/result;
+        }
+           else{
+            alert("You inserted an invalid value");
+            break;
+           }
 
                 }
+    
+               
+            
             return result;
         
         

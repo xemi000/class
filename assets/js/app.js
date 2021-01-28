@@ -1,95 +1,71 @@
+let account1 = {
+    firstName: "",
+    lastName: "",
+    bank_number: "",
+    balance: ""
+};
 
 
-let choice;
-let nums = [];
-let operaion = " ";
+let account2 = {
+    firstName: "",
+    lastName: "",
+    bank_number: "",
+    balance: ""
+};
 
 
-choice=prompt("how many numbers do you want to enter?");
-for (let index = 0; index < choice; index++) {
-    num1 = prompt("enter num");
-    nums.push(num1);
-    }
-operation = prompt("enter operation");
+account1.firstName = prompt("Enter your First name:");
+account1.lastName = prompt("Enter your Second name:");
+account1.bank_number = 0123;
+account1.balance = 0;
+account2.balance = 0;
 
 
 
 
-    
-    function sum(nums) {
-        var result=0;
-        for (let index = 0; index < nums.length; index++) {
-            if(isNaN(nums[index])){
-                continue;
-                 }
-            result += Number(nums[index]);
+(function () {
+    while (1) {
+        let choice = prompt("Choose service \n 1. Deposit \n 2. Withdraw \n 3. Balance \n 4. Transfer \n 5.Exit");
+        choice = parseInt(choice);
+
+        if (choice === 1) {
+            let depositValue = prompt("How much do you want to deposit.");
+            depositValue = parseInt(depositValue);
+            if (depositValue < 0) {
+                alert("You inserted an invalid value");
             }
-        return result;
-    }
-    function sub(nums) {
-        var result=0;
-        for (let index = 0; index < nums.length; index++) {
-            if(isNaN(nums[index])){
-                continue;
-                 }
-           result=result-Number(nums[index]);
+            account1.balance = account1.balance + depositValue;
+        } else if (choice === 2) {
+            let withdrawValue = prompt("How much do you want to withdraw.");
+            withdrawValue = parseInt(withdrawValue);
+            if (withdrawValue > account1.balance) {
+                alert("You don't have sufficient balance");
+            } else {
+                account1.balance = account1.balance - withdrawValue;
             }
-        return result;
-    }
-    function mult(nums) {
-        var result=1;
-        for (let index = 0; index < nums.length; index++) {
-            
-           result*=Number(nums[index]);
+        } else if (choice === 3) {
+            alert("Your account balance is " + account1.balance);
+        } else if (choice === 4) {
+            let transferNo = prompt("Enter the transfer amount:");
+            transferNo = parseInt(transferNo);
+            if (transferNo > account1.balance) {
+                alert("You don't have sufficient balance");
+                console.log("You don't have sufficient balance");
+            } else {
+                account2.firstName = prompt("Enter the recipient's first name:");
+                account2.lastName = prompt("Enter the recipient's last name:");
+                account2.bank_number = prompt("Enter the recipient's Account Number:");
+                account2.balance = account2.balance + transferNo;
+                account1.balance = account1.balance - transferNo;
+                alert("Transferred succesfully");
             }
-        return result;
-        
-        
+
+        } else if (choice === 5) {
+            break;
+        } else {
+            alert("Wrong input. Try again!");
+        }
+
     }
-    function div(nums) {
-        var result;
-        for (let index = 0; index < nums.length; index++) {
-            if (Number(nums[index]=!0)) {
-           result=result/Number(nums[index]);}
 
-                }
-            return result;
-        
-        
-    }
-    switch(operaion) {
-    case  "add": 
-        console.log(sum(nums));
-        break;
-        
-    
-    case "sub" : 
-        console.log(sub(nums));
-        break;
-        
-    
-    case "mult" : 
-        console.log(mult(nums));
-        break;
-        
-    
-    case "div" : 
-        console.log(div(nums));
-        break;
-        
-    default:
-        console.log('Invalid operator');
-        break;
-}
-    
-    
-
-
-
-
-
-
-
-
-
-
+})();
